@@ -4,21 +4,13 @@ tools {
     go 'go-1.11'
 }
 environment {
-    GO111MODULE = 'auto'
+    GO111MODULE = 'on'
 }
 stages {
 
 
 stage('Compile') {
         steps {
-//          sh 'ps -ef | grep main10 | grep -v grep | awk "{print $2}" | xargs kill'
-sh '''
-if lsof -i:1323
-then
-kill $(lsof -t -i:1323)
-fi
-'''
-//            sh 'go mod init'
             sh 'go get github.com/labstack/echo/v4'
             sh 'go build'
         }
