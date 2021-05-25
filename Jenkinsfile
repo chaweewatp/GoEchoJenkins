@@ -9,8 +9,7 @@ environment {
 stages {
 stage('Compile') {
         steps {
-            sh 'go mod init myapp'
-            sh 'go go get github.com/labstack/echo/v4'
+            sh 'go get github.com/labstack/echo/v4'
             sh 'go build'
         }
     }
