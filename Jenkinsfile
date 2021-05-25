@@ -11,7 +11,7 @@ pipeline {
         go get github.com/labstack/echo/v4
         '''
         }
-        }
+      }
          stage('build'){
             steps {
                 sh '''
@@ -19,30 +19,12 @@ pipeline {
                     '''
             }
         }
-//         stage('deploy'){
-//             steps {
-//                 sh '''
-//                     ./main10
-//                 '''
-//             }
-//         }
-
-
-        stage('Setup gunicorn service'){
-            steps {
-                sh '''
-                    chmod +x gunicorn.sh
-                    ./gunicorn.sh
-                    '''
-            }
-        }
-//         stage('Setup Nginx'){
-//             steps {
-//                 sh '''
-//                     chmod +x nginx.sh
-//                     ./nginx.sh
-//                     '''
-//             }
-//         }
+         stage('deploy'){
+             steps {
+                 sh '''
+                     go run main10.go
+                 '''
+             }
+         }
     }
 }
