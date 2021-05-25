@@ -14,6 +14,12 @@ stage('Compile') {
         }
     }
 
+stage('Release'){
+steps{
+sh './main10.go'
+}
+}
+
 //    stage('Test') {
 //            environment {
 //                CODECOV_TOKEN = credentials('codecov_token')
