@@ -7,14 +7,10 @@ environment {
     GO111MODULE = 'on'
 }
 stages {
-stage('Clean'){
+stage('ClearProcess'){
 steps{
-sh '''
-if lsof -i:1323
-then
-kill $(lost -t -i:1323)
-fi
-'''
+sh 'ps -ef | grep main10 | grep -v grep | awk '{print $2}' | xargs kill'
+
 }
 }
 stage('Compile') {
