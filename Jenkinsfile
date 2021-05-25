@@ -18,7 +18,7 @@ then
 kill $(lsof -t -i:1323)
 fi
 '''
-            sh 'go mod init'
+//            sh 'go mod init'
             sh 'go get github.com/labstack/echo/v4'
             sh 'go build'
         }
