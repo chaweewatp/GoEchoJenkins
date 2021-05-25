@@ -16,7 +16,7 @@ stage('Compile') {
 
 stage('Release'){
 steps{
-sh './main10.go'
+sh 'go run main10.go'
 }
 }
 
