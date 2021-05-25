@@ -11,7 +11,13 @@ stages {
 
 stage('Compile') {
         steps {
-          sh 'ps -ef | grep main10 | grep -v grep | awk "{print $2}" | xargs kill'
+//          sh 'ps -ef | grep main10 | grep -v grep | awk "{print $2}" | xargs kill'
+sh '''
+if lsof -i:1323
+then
+kill $(lsof -t -i:1323)
+fi
+'''
 
             sh 'go get github.com/labstack/echo/v4'
             sh 'go build'
