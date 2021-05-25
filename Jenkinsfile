@@ -7,14 +7,12 @@ environment {
     GO111MODULE = 'on'
 }
 stages {
-stage('ClearProcess'){
-steps{
-sh 'ps -ef | grep main10 | grep -v grep | awk '{print $2}' | xargs kill'
 
-}
-}
+    
 stage('Compile') {
         steps {
+          sh 'ps -ef | grep main10 | grep -v grep | awk '{print $2}' | xargs kill'
+
             sh 'go get github.com/labstack/echo/v4'
             sh 'go build'
         }
@@ -22,7 +20,7 @@ stage('Compile') {
 
 stage('Release'){
 steps{
-sh 'go run main10.go'
+  sh 'go run main10.go'
 }
 }
 
