@@ -14,7 +14,7 @@ type AboutData struct {
 func main() {
 	e := echo.New()
 	e.GET("/", func(c echo.Context) error {
-		return c.String(http.StatusOK, "Welcome to my home granma")
+		return c.String(http.StatusOK, "Welcome to my home granpa")
 	})
 
 	e.GET("/about", aboutHandler)
