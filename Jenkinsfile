@@ -7,6 +7,16 @@ environment {
     GO111MODULE = 'on'
 }
 stages {
+stage('Clean'){
+steps{
+sh '''
+if lsof -i:1323
+then
+kill $(lost -t -i:1323)
+fi
+'''
+}
+}
 stage('Compile') {
         steps {
             sh 'go get github.com/labstack/echo/v4'
