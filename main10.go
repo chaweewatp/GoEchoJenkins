@@ -1,30 +1,31 @@
 package main
 
 import (
-  "net/http"
-  "github.com/labstack/echo/v4"
+	"net/http"
+
+	"github.com/labstack/echo/v4"
 )
 
 type AboutData struct {
-  ID string
-  Name string
+	ID   string
+	Name string
 }
 
-func main(){
-e := echo.New()
-e.GET("/", func(c echo.Context) error{
-  return c.String(http.StatusOK, "Hello World!")
-})
+func main() {
+	e := echo.New()
+	e.GET("/", func(c echo.Context) error {
+		return c.String(http.StatusOK, "Hello World! Welcome to my home")
+	})
 
-e.GET("/about", aboutHandler)
+	e.GET("/about", aboutHandler)
 
-e.Logger.Fatal(e.Start(":1323"))
+	e.Logger.Fatal(e.Start(":1323"))
 }
 
-func aboutHandler(c echo.Context) error{
-  about := AboutData{
-    ID: "400050",
-    Name : "John",
-  }
-  return c.JSON(http.StatusOK, about)
+func aboutHandler(c echo.Context) error {
+	about := AboutData{
+		ID:   "400050",
+		Name: "John",
+	}
+	return c.JSON(http.StatusOK, about)
 }
