@@ -4,7 +4,7 @@ tools {
     go 'go-1.11'
 }
 environment {
-    GO111MODULE = 'on'
+    GO111MODULE = 'auto'
 }
 stages {
 
